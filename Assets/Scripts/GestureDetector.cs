@@ -14,7 +14,7 @@ public struct Gesture
 
 public class GestureDetector : MonoBehaviour
 {
-    public float threshold = 0.1f;
+    public float threshold = 0.05f;
     public OVRSkeleton skeleton;
     public List<Gesture> gestures;
     public bool debugMode = true;
@@ -23,7 +23,7 @@ public class GestureDetector : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         fingerBones = new List<OVRBone>(skeleton.Bones);
         previousGesture = new Gesture();
@@ -31,7 +31,7 @@ public class GestureDetector : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         if(debugMode && Input.GetKeyDown(KeyCode.Space))
         {
@@ -51,7 +51,7 @@ public class GestureDetector : MonoBehaviour
         }
     }
 
-    void Save()
+    private void Save()
     {
         Gesture g = new Gesture();
         g.name = "New Gesture";
@@ -66,7 +66,7 @@ public class GestureDetector : MonoBehaviour
         gestures.Add(g);
     }
 
-    Gesture Recognize()
+    private Gesture Recognize()
     {
         Gesture currentgesture = new Gesture();
         float currentMin = Mathf.Infinity;
