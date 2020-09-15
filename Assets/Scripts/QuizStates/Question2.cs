@@ -19,7 +19,7 @@ public class Question2 : State
 
     public override void Execute()
     {
-        if (Quiz.quiz.currentPose.name == HandPoseName.Three)
+        if (Quiz.quiz.currentPose.name == HandPoseName.Two)
         {
             Quiz.quiz.AnswerCorrect.Invoke();
             Quiz.quiz.currentPose = new HandPose();
