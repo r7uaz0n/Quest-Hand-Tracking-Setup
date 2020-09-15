@@ -50,7 +50,11 @@ public class pkratten_HandPoseEvents : MonoBehaviour
             time += Time.deltaTime;
             if(time > delay)
             {
-                if (pose == false) PoseEnter.Invoke(HandPose.currentPose);
+                if (pose == false)
+                {
+                    PoseEnter.Invoke(HandPose.currentPose);
+                    pose = true;
+                }
                 else PoseStay.Invoke(HandPose.currentPose);
             }
             else
