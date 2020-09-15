@@ -337,7 +337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d19b93a14bd33f45a803d6e8e402e65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  threshold: 0.05
+  threshold: 0.2
   skeleton: {fileID: 1733050420}
   gestures:
   - name: No 1
@@ -520,10 +520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afa707188229eeb4ebe3cf97b72fb44c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabs:
-  - {fileID: 6997854214183724604, guid: a2b338e9e11e3e24884b1bde9831d74b, type: 3}
-  - {fileID: 4679594466968894733, guid: 271a3a58dd22ef842a2a4f07318d3ec4, type: 3}
-  - {fileID: 3681011705657012294, guid: ba06509f3dbd8724485d3534c42a29b1, type: 3}
+  spawnPrefabs: []
 --- !u!4 &813477912
 Transform:
   m_ObjectHideFlags: 0
