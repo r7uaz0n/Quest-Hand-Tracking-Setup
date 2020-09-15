@@ -21,6 +21,8 @@ public struct HandPose
     public List<Vector3> relativePositions;
     [HideInInspector]
     public List<Vector3> relativeDirections;
+    [HideInInspector]
+    public List<float> angle;
     public Handedness handedness;
 }
 
@@ -33,8 +35,8 @@ public enum HandPoseName
     Three,
     Four,
     Five,
-    Stop,
-    Open,
+    //Stop,
+    //Open,
     ThumbsUp,
     Pinch,
     PinchGrab
@@ -73,7 +75,8 @@ public enum Handedness : byte
 public enum DetectionMethod
 {
     RelativePositions,
-    RelativeDirections
+    RelativeDirections,
+    Angle
 }
 
 public class pkratten_HandPose : MonoBehaviour
@@ -97,10 +100,10 @@ public class pkratten_HandPose : MonoBehaviour
     {
         Handedness handedness = Handedness.None;
 
-        int countR = 0;
-        int countL = 0;
+        int countR = 1;
+        int countL = 1;
 
-        for (int i = 0; i < pose.Positions.Count; i++)
+        for (int i = 1; i < pose.Positions.Count; i++)
         {
             switch (detectionMethod)
             {
@@ -116,13 +119,19 @@ public class pkratten_HandPose : MonoBehaviour
                     relativeDirection = Hands.HandLeft[ReferenceIndex].transform.InverseTransformDirection(Hands.HandLeft[i].right);
                     if (Vector3.Distance(relativeDirection, pose.relativeDirections[i]) < Tolerance) countL++;
                     break;
+                case DetectionMethod.Angle:
+                    float angle = Vector3.Angle(Hands.HandRight[i].parent.forward, Hands.HandRight[i].forward);
+                    if (Mathf.Abs(angle - pose.angle[i]) < Tolerance) countR++;
+                    angle = Vector3.Angle(Hands.HandLeft[i].parent.forward, Hands.HandLeft[i].forward);
+                    if (Mathf.Abs(angle - pose.angle[i]) < Tolerance) countL++;
+                    break;
             }
 
             
         }
 
         if (countR == pose.Positions.Count) handedness = Handedness.Right;
-        if (countL == pose.Positions.Count) handedness = Handedness.Left;
+        if (countL == pose.Positions.Count) handedness |= Handedness.Left;
 
         return handedness;
     }
@@ -138,6 +147,8 @@ public class pkratten_HandPose : MonoBehaviour
         pose.Positions = new List<Vector3>();
         pose.Rotations = new List<Quaternion>();
         pose.relativePositions = new List<Vector3>();
+        pose.relativeDirections = new List<Vector3>();
+        pose.angle = new List<float>();
         pose.handedness = Handedness.None;
 
         List<Transform> hand;
@@ -153,6 +164,7 @@ public class pkratten_HandPose : MonoBehaviour
             pose.localRotations.Add(current.localRotation);
             pose.relativePositions.Add(hand[ReferenceIndex].transform.InverseTransformPoint(current.position));
             pose.relativeDirections.Add(hand[ReferenceIndex].transform.InverseTransformDirection(current.right));
+            pose.angle.Add(Vector3.Angle(current.parent.forward, current.forward));
         }
         if(record == Record.Left)
         {
@@ -177,7 +189,7 @@ public class pkratten_HandPose : MonoBehaviour
         foreach (var pose in Poses)
         {
             Handedness handedness = ComparePose(pose);
-            if(handedness!= Handedness.None)
+            if(handedness != Handedness.None)
             {
                 currentPose = pose;
                 currentPose.handedness = handedness;
