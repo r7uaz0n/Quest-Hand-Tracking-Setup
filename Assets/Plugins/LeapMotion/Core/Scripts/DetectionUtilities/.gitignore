@@ -1,0 +1,16 @@
+/AbstractHoldDetector.cs
+/AbstractHoldDetector.cs.meta
+/Detector.cs
+/Detector.cs.meta
+/DetectorLogicGate.cs
+/DetectorLogicGate.cs.meta
+/ExtendedFingerDetector.cs
+/ExtendedFingerDetector.cs.meta
+/FingerDirectionDetector.cs
+/FingerDirectionDetector.cs.meta
+/PalmDirectionDetector.cs
+/PalmDirectionDetector.cs.meta
+/PinchDetector.cs
+/PinchDetector.cs.meta
+/ProximityDetector.cs
+/ProximityDetector.cs.meta
