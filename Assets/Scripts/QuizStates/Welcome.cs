@@ -21,7 +21,7 @@ public class Welcome : State
     {
         if(Quiz.quiz.currentPose.name == HandPoseName.ThumbsUp)
         {
-            Quiz.quiz.ChangeState<ChooseQuestion>();
+            Quiz.quiz.ChangeState<Question1>();
         }
     }
 }

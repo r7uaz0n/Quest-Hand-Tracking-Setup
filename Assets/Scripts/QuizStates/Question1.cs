@@ -24,7 +24,7 @@ public class Question1 : State
         {
             Quiz.quiz.AnswerCorrect.Invoke();
             Quiz.quiz.currentPose = new HandPose();
-            Quiz.quiz.ChangeState<ChooseQuestion>();
+            Quiz.quiz.ChangeState<Question2>();
         }
         else if(Quiz.quiz.currentPose.name != HandPoseName.None)
         {

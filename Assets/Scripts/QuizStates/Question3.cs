@@ -23,7 +23,7 @@ public class Question3 : State
         {
             Quiz.quiz.AnswerCorrect.Invoke();
             Quiz.quiz.currentPose = new HandPose();
-            Quiz.quiz.ChangeState<ChooseQuestion>();
+            Quiz.quiz.ChangeState<Welcome>();
         }
         else if (Quiz.quiz.currentPose.name != HandPoseName.None)
         {
