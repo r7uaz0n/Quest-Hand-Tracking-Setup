@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/HandTrackingGestureDetection.unity
-    guid: 02ec4e314e4648d4b9ee9f5221e2f70a
+    path: Assets/Scenes/HandTrackingGestureDetection2.unity
+    guid: 73ec070280666544980d705a22b3f3d7
   m_configObjects: {}
