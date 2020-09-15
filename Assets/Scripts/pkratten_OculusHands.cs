@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class pkratten_OculusHands : pkratten_HandsBase
 {
@@ -109,10 +110,7 @@ public class pkratten_OculusHands : pkratten_HandsBase
                     break;
             }
 
-            if (i == -1)
-            {
-                continue;
-            }
+            if (i == -1) continue;
 
             hand[i].position = bone.Transform.position;
             hand[i].rotation = Quaternion.LookRotation(bone.Transform.right, bone.Transform.up);
