@@ -108,6 +108,12 @@ public class pkratten_OculusHands : pkratten_HandsBase
                 default:
                     break;
             }
+
+            if (i == -1)
+            {
+                continue;
+            }
+
             hand[i].position = bone.Transform.position;
             hand[i].rotation = Quaternion.LookRotation(bone.Transform.right, bone.Transform.up);
         }
